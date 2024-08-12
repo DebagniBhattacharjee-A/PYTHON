@@ -1,0 +1,183 @@
+1) Write a program to enter a string. Calculate the length of the string. Find the substring country.
+Count the occurences of each word in the given sentence.
+If the String as input is India is my motherland. I love my country. Capital of India is New Delhi.
+input_string = "India is my motherland. I love my country. Capital of India is New Delhi."
+length_of_string = len(input_string)
+print("Length of the string:", length_of_string)
+substring = "country"
+index_of_substring = input_string.find(substring)
+if index_of_substring != -1:
+    print(f"The substring '{substring}' is found at index:", index_of_substring)
+else:
+    print(f"The substring '{substring}' is not found in the input string.")
+import re
+from collections import Counter
+words = re.findall(r'\b\w+\b', input_string.lower())
+word_count = Counter(words)
+print("Word occurrences:", word_count)
+OUTPUT-
+Length of the string: 73
+The substring 'country' is found at index: 34
+Word occurrences: Counter({'india': 2, 'is': 2, 'my': 2, 'motherland': 1, 'i': 1, 'love': 1, 'country': 1, 'capital': 1, 'of': 1, 'new': 1, 'delhi': 1})
+ 
+2) Write a program that accepts a comma separated sequence of words as input and prints the words in a comma-separated sequence after sorting them alphabetically. Suppose the following input is supplied to the program: without,hello,bag,world
+Then, the output should be:
+bag,hello,without,world
+input_sequence = "without,hello,bag,world"
+print("Input sequence:", input_sequence)
+words = input_sequence.split(',')
+words.sort()
+sorted_sequence = ','.join(words)
+print("Sorted sequence:", sorted_sequence)
+OUTPUT-
+Input sequence: without,hello,bag,world
+Sorted sequence: bag,hello,without,world
+
+ 
+3) Write a program that accepts sequence of lines as input and prints the lines after making all
+characters in the sentence capitalized. Suppose the following input is supplied to the program:
+Hello world
+Practice makes perfect
+Then, the output should be:
+HELLO WORLD
+PRACTICE MAKES PERFECT
+# Initialize an empty list to store the input lines
+lines = []
+print("Enter lines of text (enter an empty line to finish):")
+while True:
+    line = input()
+    if line:
+        lines.append(line)
+    else:
+        break
+uppercased_lines = [line.upper() for line in lines]
+print("Output:")
+for line in uppercased_lines:
+    print(line)
+OUTPUT-
+Enter lines of text (enter an empty line to finish):
+Hello world
+Practice makes perfect
+OUTPUT-
+HELLO WORLD
+PRACTICE MAKES PERFECT
+ 
+4) Write a program that accepts a sequence of whitespace separated words as input and prints the
+words after removing all duplicate words and sorting them alphanumerically. Suppose the following input is supplied to the program:
+hello world and practice makes perfect and hello world again
+Then, the output should be:
+again and hello makes perfect practice world
+input_string = input("Enter a sequence of whitespace-separated words: ")
+words = input_string.split()
+unique_words = set(words)
+sorted_words = sorted(unique_words)
+sorted_sequence = ' '.join(sorted_words)
+print("Output:", sorted_sequence)
+OUTPUT-
+Enter a sequence of whitespace-separated words: hello world and practice makes perfect and hello world again
+Output: again and hello makes perfect practice world
+ 
+5) Write a program that accepts a sentence and calculate the number of letters and digits.
+Suppose the following input is supplied to the program:
+hello world! 123
+Then, the output should be:
+LETTERS 10
+DIGITS 3
+sentence = input("Enter a sentence: ")
+letters_count = 0
+digits_count = 0
+for char in sentence:
+    if char.isalpha():  
+        letters_count += 1
+    elif char.isdigit(): 
+        digits_count += 1
+print(f"LETTERS {letters_count}")
+print(f"DIGITS {digits_count}")
+OUTPUT-
+Enter a sentence: hello world! 123
+LETTERS 10
+DIGITS 3
+ 
+6) Write a program which accepts a string as input to print “Yes” if the string  “yes” or ”YES” or
+“Yes”, otherwise print “No”.
+input_string = input("Enter a string: ")
+if input_string in ["yes", "YES", "Yes"]:
+    print("Yes")
+else:
+    print("No")
+OUTPUT-
+Enter a string:hello
+NO
+ 
+7) Write a program which accepts a sequence of words separated by whitespace as input to print the words composed of digits only.
+Example:
+If the following words is given as input to the program:
+2 cats and 3 dogs.
+Then, the output of the program should be:
+[‘2’ , ‘3’]
+In case of input data being supplied to the question, it should be assumed to be a console input.
+input_string = input("Enter a sequence of words: ")
+words = input_string.split()
+digits_only = [word for word in words if word.isdigit()]
+print(digits_only)
+OUTPUT-
+Enter a sequence of words:2 cats and 3 dogs.
+[‘2’ , ‘3’]
+ 
+8) Please write a program which count and print the numbers of each character in a string input by
+console. Example:
+If the following string is given as input to the program:      abcdefgabc
+Then, the output of the program should be:
+a,2
+c,2
+b,2
+e,1
+d,1
+g,1
+f,1
+from collections import Counter
+input_string = input("Enter a string: ")
+char_count = Counter(input_string)
+for char in sorted(char_count):
+    print(f"{char},{char_count[char]}")
+OUTPUT-
+Enter a string:abcdefgabc
+a,2
+c,2
+b,2
+e,1
+d,1
+g,1
+f,1
+ 
+9) Write a program that accepts a string
+I. 1.reverses it.
+II. 2.checks whether it is a palindrome.
+III. 3.checks whether it ends with a specific substring.
+IV. 4.capitalize the first letter of each word in a string
+V. 5.check if a string is anagram of another string
+VI. 6.remove vowels from string
+VII. 7.find length of the longest word in a sentence
+input_string = input("Enter a string: ")
+reversed_string = input_string[::-1]
+print("Reversed string:", reversed_string)
+is_palindrome = input_string == reversed_string
+print("Is the string a palindrome?", is_palindrome)
+substring = input("Enter a substring to check if the string ends with it: ")
+ends_with_substring = input_string.endswith(substring)
+print("Does the string end with the substring?", ends_with_substring)
+capitalized_string = input_string.title()
+print("Capitalized string:", capitalized_string)
+another_string = input("Enter another string to check for anagram: ")
+is_anagram = sorted(input_string) == sorted(another_string)
+print("Is the string an anagram of the other string?", is_anagram)
+vowels = "aeiouAEIOU"
+no_vowels_string = ''.join(char for char in input_string if char not in vowels)
+print("String without vowels:", no_vowels_string)
+sentence = input("Enter a sentence to find the length of the longest word: ")
+words = sentence.split()
+longest_word_length = max(len(word) for word in words)
+print("Length of the longest word:", longest_word_length)
+OUTPUT:
+
+
